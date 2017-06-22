@@ -27,14 +27,14 @@ TGiven all attributes known for test entities, the participants will be provided
 For the test phase, the participants will be provided with a set of triples we will compute recall (how many of the attributes were predicted correctly) and precision (how many of the predictions were correct), and solutions will be scored by their F-measure.
  
 In making assertions about attributes, teams should use the W3C prov standard to capture the source of an assertion. For example, an assertion that Microsoft’s website URL is www.microsoft.com would be supported by a provenance record referred to from the quad. An example might be:
- 
+```markdown 
 <pid:1-42959007168> <org:url> <http://www.microsoft.com> <prov:12345> .
 <prov:12345> <prov:wasDerivedFrom> <http://www.microsoft.com> <prov:12345> .
 <prov:12345> <prov:wasGeneratedBy> <agent:1234> <prov:12345> .
 <prov:12345> <prov:type> <prov:webscrape> <prov:12345> .
- 
+``` 
 However, the provenance information will not be validated for scoring the solution.
-Task Two: Attribute validation
+# Task Two: Attribute validation
 The second task of the challenge is to validate existing attributes. For this task, participants will create an algorithm to validate attributes given for a person or organization entity.
  
 As before, the permid.org data set can be used as training data (with the website predicate being a useful jumping off point for validation). Teams can further divide this data set to generate their own test data.
@@ -43,7 +43,7 @@ Teams should note that, for a given permid.org entity, some attributes are marke
  
 For solution scoring, a test dataset will be provided with correct and incorrect attributes, which are only known to the dataset owners. The challenge participants are expected to provide a trust score for each of the statements (i.e., a numerical value between 0 and 1). The solutions will be scored by using the area under the ROC curve (AUC).
 Participation Instructions
-How to submit?
+# How to submit?
 Fill in the submission form for the task of interest
 Upload your results in form of an RDF graph
 Get results displayed
