@@ -7,7 +7,7 @@
 - [Task Two: Attribute validation](#task-two--attribute-validation)
 - [How to submit?](#how-to-submit-)
     
-## Introduction
+# Introduction
 The [International Semantic Web Conference](https://iswc2017.semanticweb.org), to be held in Vienna in late October 2017, hosts an annual challenge that aims to promote the use of innovative and new approaches to creation and use of the semantic web. This year's challenge will focus on **knowledge graphs**. Both public and privately owned, knowlwedge graphs are currently among the most prominent implementations of Semantic Web technologies. 
 
 This year’s Semantic Web Challenge is centered around two important tasks for building large-scale knowledge graphs:
@@ -17,13 +17,13 @@ For both tasks, users may use a portion of the knowledge graph for training. Fur
  
 Participants may choose to participate in one or both tasks. The evaluation of challenge participants will be carried out on the Knowledge Graph owned by Thomson Reuters (TR). The KG has a public and a private part; the [public part](https://permid.org/) can be used for building and training the candidate systems, the private part will be used for evaluation.
 
-## Core Data Set
+# Core Data Set
 The core dataset for the challenge will be the open data exposed by Thomson Reuters (TR) at permid.org. This dataset consists of an authoritative graph of entities of interest to and mastered by TR:
 
 
 These entities are published as open data under a Creative Commons license to facilitate their use throughout the industry and promote inter-linking of datasets across customers and suppliers. The private part of the graph follows the same schema as the public part, plus extensions of additional relations and properties. However, for the challenge, only relations that are also present in the public graph will be used for the evaluation. The relevant entity types for the challenge will be organizations and persons.
 
-## Task One: Attribute prediction
+# Task One: Attribute prediction
 Each organization in the permid.org dataset has a set of attributes, such as address, phone number, website, industrial classification, etc. Those are provided for the entities in the training set, and users are asked to provide them for entities in the test set, given a URI and a labellabel.
  
 For example, the TR entity corresponding to Microsoft (https://permid.org/1-4295907168) is publically available, but the TR entity corresponding to E.V.H. Investments Ltd of Cyprus (data.thomsonreuters.com/1-5055735740, not publically dereferencable) is not. However, information about EVH is available on the Internet. Another example might be US Water Company LLC (data.thomsonreuters.com /1-5055735752).
