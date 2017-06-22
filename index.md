@@ -1,11 +1,14 @@
 # ISWC Semantic Web Challenge 2017
 
 ## Table of Contents
+- [ISWC Semantic Web Challenge 2017](#iswc-semantic-web-challenge-2017)
 - [Introduction](#introduction)
 - [Core Data Set](#core-data-set)
 - [Task One: Attribute prediction](#task-one--attribute-prediction)
 - [Task Two: Attribute validation](#task-two--attribute-validation)
+- [Timeline for all tasks](#timeline-for-all-tasks)
 - [How to submit?](#how-to-submit-)
+- [Prizes](#prizes)
     
 # Introduction
 The [International Semantic Web Conference](https://iswc2017.semanticweb.org), to be held in Vienna in late October 2017, hosts an annual challenge that aims to promote the use of innovative and new approaches to creation and use of the semantic web. This year's challenge will focus on **knowledge graphs**. Both public and privately owned, knowlwedge graphs are currently among the most prominent implementations of Semantic Web technologies. 
