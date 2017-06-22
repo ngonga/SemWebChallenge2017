@@ -1,17 +1,18 @@
 # Welcome to the ISWC Semantic Web Challenge 2017
 
 ## Introduction
-The [International Semantic Web Conference](https://iswc2017.semanticweb.org), to be held in Vienna in late October 2017, hosts an annual challenge that aims to promote the use of innovative and new approaches to creation and use of the semantic web. This year's challenge will focus on **Knowledge Graphs**. Both public and privately owned, knowlwedge graphs are currently among the most prominent implementations of Semantic Web technologies. 
+The [International Semantic Web Conference](https://iswc2017.semanticweb.org), to be held in Vienna in late October 2017, hosts an annual challenge that aims to promote the use of innovative and new approaches to creation and use of the semantic web. This year's challenge will focus on **knowledge graphs**. Both public and privately owned, knowlwedge graphs are currently among the most prominent implementations of Semantic Web technologies. 
 
 This year’s Semantic Web Challenge is centered around two important tasks for building large-scale knowledge graphs:
-- **Knowledge graph population**. Given the name and type of an entity, e.g., a name of a company, and a relation, e.g., phone number, participants are expected to provide the value(s) for the relation.
-- **Knowledge graph validation**. Given a statement about an entity, e.g., the phone number of a company, participants are expected to provide an assessment about the correctness of the statement.
+- **Knowledge graph population**. Given the name and type of a subject entity, (e.g., a company) and a relation, (e.g., CEO) participants are expected to provide the value(s) for the relation.
+- **Knowledge graph validation**. Given a statement about an entity, e.g., the CEO of a company, participants are expected to provide an assessment about the correctness of the statement.
 For both tasks, users may use a portion of the knowledge graph for training. Furthermore, arbitrary sources (e.g., external datasets, Web pages, etc.) may be used as input.
  
 Participants may choose to participate in one or both tasks. The evaluation of challenge participants will be carried out on the Knowledge Graph owned by Thomson Reuters (TR). The KG has a public and a private part; the [public part](https://permid.org/) can be used for building and training the candidate systems, the private part will be used for evaluation.
 
 # Core Data Set
 The core dataset for the challenge will be the open data exposed by Thomson Reuters (TR) at permid.org. This dataset consists of an authoritative graph of entities of interest to and mastered by TR:
+
 
 These entities are published as open data under a Creative Commons license to facilitate their use throughout the industry and promote inter-linking of datasets across customers and suppliers. The private part of the graph follows the same schema as the public part, plus extensions of additional relations and properties. However, for the challenge, only relations that are also present in the public graph will be used for the evaluation. The relevant entity types for the challenge will be organizations and persons.
 
@@ -20,13 +21,23 @@ Each organization in the permid.org dataset has a set of attributes, such as add
  
 For example, the TR entity corresponding to Microsoft (https://permid.org/1-4295907168) is publically available, but the TR entity corresponding to E.V.H. Investments Ltd of Cyprus (data.thomsonreuters.com/1-5055735740, not publically dereferencable) is not. However, information about EVH is available on the Internet. Another example might be US Water Company LLC (data.thomsonreuters.com /1-5055735752).
  
-Of course, a team will not be able to predict the Perm ID that Thomson Reuters has used internally. A corresponding ID will be provided in form of an RDF graph (e.g., ex:company1 rdfs:label “US Water Company LLC”@en)., The participants so should focus on the attributes and create a synthetic identifier to uniquely identify their entity. The test data will then match against these, ignoring the identifier. A set of URIs for relevant properties (e.g., headquarters) and a set of URIs to use (e.g., DBpedia URIs for cities) will be provided. 
+Of course, a team will not be able to predict the Perm ID that Thomson Reuters has used internally. A corresponding ID will be provided in form of an RDF graph, e.g., 
+```markdown
+ex:company1 rdfs:label “US Water Company LLC”@en .
+ex:company2 rdfs:label "E.V.H. Investments Ltd"@en .
+```
+A set of URIs for relevant properties (e.g., headquarters) and a set of URIs to use (e.g., DBpedia URIs for cities) will be provided. 
  
 The challenge will work as follows:
-TGiven all attributes known for test entities, the participants will be provided with training data in the form of an RDF graph
-For the test phase, the participants will be provided with a set of triples we will compute recall (how many of the attributes were predicted correctly) and precision (how many of the predictions were correct), and solutions will be scored by their F-measure.
+- The participants will use the open version of the TR graph as training data.
+- In addition, the participants will be provided with a set of predicates of which the values are to be predicted (e.g., :CEO).
+- For the test phase, the participants will be provided with a set of triples (see the example above). They are to return property values for the set of predicates provided in the previous step in the form of an RDF graph, e.g., 
+```markdown
+ex:company2 ex:CEO https://opencorporates.com/officers/131761332 .
+```
+we will compute recall (how many of the attributes were predicted correctly) and precision (how many of the predictions were correct), and solutions will be scored by their F-measure.
  
-In making assertions about attributes, teams should use the W3C prov standard to capture the source of an assertion. For example, an assertion that Microsoft’s website URL is www.microsoft.com would be supported by a provenance record referred to from the quad. An example might be:
+In making assertions about attributes, teams can use the W3C prov standard to capture the source of an assertion. For example, an assertion that Microsoft’s website URL is www.microsoft.com would be supported by a provenance record referred to from the quad. An example might be:
 ```markdown 
 <pid:1-42959007168> <org:url> <http://www.microsoft.com> <prov:12345> .
 <prov:12345> <prov:wasDerivedFrom> <http://www.microsoft.com> <prov:12345> .
