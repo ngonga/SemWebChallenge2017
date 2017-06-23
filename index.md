@@ -59,11 +59,21 @@ However, the provenance information will not be validated for scoring the soluti
 The second task of the challenge is to validate existing attributes. For this task, participants will create an algorithm to validate attributes given for a person or organization entity. As before, the permid.org data set can be used as training data (with the website predicate being a useful jumping off point for validation). Teams can further divide this data set to generate their own test data.
 Teams should note that, for a given permid.org entity, some attributes are marked as “N/A”. In these instances Thomson Reuters has been unable to validate the attribute. A solution for task 1 might be able to find a value for an N/A attribute. In scoring, the challenge will not consider this a failure.
  
-For solution scoring, a test dataset will be provided with correct and incorrect attributes, which are only known to the dataset owners. The challenge participants are expected to provide a trust score for each of the statements (i.e., a numerical value between 0 and 1). The solutions will be scored by using the area under the ROC curve (AUC).
+For solution scoring, a test dataset will be provided with correct and incorrect attributes, which are only known to the dataset owners. The test dataset will consist of reified statements, e.g.,
+```markdown
+ex:statement1 rdfs:hasSubject ex:Microsoft; 
+rdfs:hasPredicate ex:CEO;
+rdfs:hasObject ex:BillGates .
+```
+The challenge participants are expected to provide a trust score for each of the statements (i.e., a numerical value between 0 and 1), where 0 means that they are sure that the statement is false and 1 means that they are sure the statement is true. For example, a system could return 
+```markdown
+ex:statement1 ex:hasTruthValue "0.5"^^xsd:double .
+```
+The solutions will be scored by using the area under the ROC curve (AUC).
 
-Participation Instructions
+# Participation Instructions
 
-# Timeline for all tasks
+## Timeline for all tasks
 - Training data available now at (http://permid.org)
 - August 13th, 2017: Test data available  
 - August 13th, 2017: Submission and evaluation forms available
@@ -71,14 +81,13 @@ Participation Instructions
 - September 15th, 2017: Announcement of finalists
 - October 21-25th, 2017: Conference
 
-# Challenge submission
+## Challenge submission
 - Fill in the submission form (link will be provided nearer the time) for the task of interest
 - Upload your results in form of an RDF graph
 - Get results displayed in a leaderboard
 
-# Prizes
+## Prizes
 The winning team of each task will receive 1000€. The sum will be shared amongst the winning teams if several teams are declared the winners.
 
-# Presentation
+## Presentation
 Winning team for each task will be invited to present their implementation at the conference. Any submitting team may also provide posters for display at the conference accompanied by 3-4 page papers. The challenge committee is working to have these collected in special proceedings.
-
