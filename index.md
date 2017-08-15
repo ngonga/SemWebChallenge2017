@@ -25,24 +25,33 @@ The core dataset for the challenge will be the open data exposed by Thomson Reut
 
 These entities are published as open data under a Creative Commons license to facilitate their use throughout the industry and promote inter-linking of datasets across customers and suppliers. The private part of the graph follows the same schema as the public part, plus extensions of additional relations and properties. However, for the challenge, only relations & properties that are also present in the public graph will be used for the evaluation. The relevant entity types for the challenge will be organizations and persons.
 
+# Predicates for the task
+The following predicates will be used in scoring the challenge
+- http://ont.thomsonreuters.com/mdaas/isDomiciledIn
+- http://permid.org/ontology/organization/hasLatestOrganizationFoundedDate
+- http://permid.org/ontology/organization/hasHeadquartersPhoneNumber 
+
+See examples, below.
+
 # Task One: Attribute prediction
 Each organization in the permid.org dataset has a set of attributes, such as address, phone number, website, industrial classification, etc. Those are provided for the entities in the training set, and users are asked to provide them for entities in the test set, given a URI and a predicate provide an object.
  
 For example, the TR entity corresponding to Microsoft (https://permid.org/1-4295907168) is publically available, but the TR entity corresponding to E.V.H. Investments Ltd of Cyprus (data.thomsonreuters.com/1-5055735740), is not publically dereferencable. However, information about EVH is available on the Internet. Another example might be US Water Company LLC (data.thomsonreuters.com/1-5055735752).
  
-Of course, a team will not be able to predict the Perm ID that Thomson Reuters has used internally. A corresponding ID will be provided in form of an RDF graph, e.g., 
-```markdown
-ex:company1 rdfs:label “US Water Company LLC”@en .
-ex:company2 rdfs:label "E.V.H. Investments Ltd"@en .
+Of course, a team will not be able to predict the Perm ID that Thomson Reuters has used internally. The ID, URL and company name will be provided as triples:
 ```
-A set of URIs for relevant properties (e.g., headquarters) and a set of URIs to use (e.g., DBpedia URIs for cities) will be provided. 
+<http://permid.org/1-5045055688> <http://www.w3.org/2006/vcard/ns#organization-name> "Servicemaster Home Service Center LLC" .
+<http://permid.org/1-5045055688> <http://www.w3.org/2006/vcard/ns#hasURL> <http://www.servicemasterclean.com> .
+```
+
+From this data, teams should provide predictions for phone number, year founded and where the organization is domiciled.
  
 The challenge will work as follows:
 - The participants will use the open version of the TR graph as training data.
-- In addition, the participants will be provided with a set of predicates of which the values are to be predicted (e.g., :CEO).
+- In addition, the participants will be provided with a set of predicates of which the values are to be predicted (e.g., :foundedDate).
 - For the test phase, the participants will be provided with a set of triples (see the example above). They are to return property values for the set of predicates provided in the previous step in the form of an RDF graph, e.g., 
 ```markdown
-ex:company2 ex:CEO https://opencorporates.com/officers/131761332 .
+<http://permid.org/1-5045055688> <http://permid.org/ontology/organization/hasHeadquartersPhoneNumber> "00019015973000" .
 ```
 we will compute recall (how many of the attributes were predicted correctly) and precision (how many of the predictions were correct), and solutions will be scored by their F-measure.
  
@@ -57,19 +66,30 @@ However, the provenance information will not be validated for scoring the soluti
 
 # Task Two: Attribute validation
 The second task of the challenge is to validate existing attributes. For this task, participants will create an algorithm to validate attributes given for a person or organization entity. As before, the permid.org data set can be used as training data (with the website predicate being a useful jumping off point for validation). Teams can further divide this data set to generate their own test data.
-Teams should note that, for a given permid.org entity, some attributes are marked as “N/A”. In these instances Thomson Reuters has been unable to validate the attribute. A solution for task 1 might be able to find a value for an N/A attribute. In scoring, the challenge will not consider this a failure.
+Teams should note that, for a given permid.org entity, some attributes are marked as “N/A” when looking at the org in a browser (the value is not provided in RDF). In these instances Thomson Reuters has been unable to validate the attribute. A solution for task 1 might be able to find a value for an N/A attribute. In scoring, the challenge will not consider this a failure.
  
 For solution scoring, a test dataset will be provided with correct and incorrect attributes, which are only known to the dataset owners. The test dataset will consist of reified statements, e.g.,
 ```markdown
-ex:statement1 rdfs:hasSubject ex:Microsoft; 
-rdfs:hasPredicate ex:CEO;
-rdfs:hasObject ex:BillGates .
+<http://swc2017.aksw.org/task2/dataset/s-789147186> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+<http://swc2017.aksw.org/task2/dataset/s-789147186> <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <http://permid.org/1-5009196497> .
+<http://swc2017.aksw.org/task2/dataset/s-789147186> <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://permid.org/ontology/organization/hasHeadquartersPhoneNumber> .
+<http://swc2017.aksw.org/task2/dataset/s-789147186> <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> "00019169202121" .
 ```
 The challenge participants are expected to provide a trust score for each of the statements (i.e., a numerical value between 0 and 1), where 0 means that they are sure that the statement is false and 1 means that they are sure the statement is true. For example, a system could return 
 ```markdown
-ex:statement1 ex:hasTruthValue "0.5"^^xsd:double .
+<http://swc2017.aksw.org/task2/dataset/s-789147186> <http://swc2017.aksw.org/hasTruthValue> "0.0"^^<http://www.w3.org/2001/XMLSchema#double> .
+
 ```
 The solutions will be scored by using the area under the ROC curve (AUC).
+
+# Example Files
+Example data can be found at
+- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task1/exampleTask1.nt
+- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task1/exampleResultTask1.nt
+- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task2/exampleTask2.nt
+- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task2/exampleResultTask2.nt
+
+(Note these examples don't include the provenance described above) 
 
 # Participation Instructions
 
