@@ -84,13 +84,17 @@ The solutions will be scored by using the area under the ROC curve (AUC).
 
 # Example Files
 Example data can be found at
-- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task1/exampleTask1.nt
-- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task1/exampleResultTask1.nt
-- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task2/exampleTask2.nt
-- http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task2/exampleResultTask2.nt
+- [Task 1 - Example](http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task1/exampleTask1.nt)
+- [Task 1 - Example results](http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task1/exampleResultTask1.nt)
+- [Task 2 - Example](http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task2/exampleTask2.nt)
+- [Task 2 - Example results](http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task2/exampleResultTask2.nt)
 
 (Note these examples don't include the provenance described above) 
 
+# Test Data
+ - [Task 1](http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task1/task1.nt)
+ - [Task 2](http://hobbitdata.informatik.uni-leipzig.de/SWC2017/Task2/task2.nt)
+ 
 # Participation Instructions
 
 ## Timeline for all tasks
