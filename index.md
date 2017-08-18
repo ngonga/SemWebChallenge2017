@@ -106,8 +106,7 @@ Example data can be found at
 - October 21-25th, 2017: Conference
 
 ## Challenge submission
-- Fill in the submission form (link will be provided nearer the time) for the task of interest
-- Upload your results in form of an RDF graph
+- Submit solutions via [Gerbil](http://swc2017.aksw.org/gerbil/config)
 - Get results displayed in a leaderboard
 
 ## Prizes
