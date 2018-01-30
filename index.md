@@ -50,9 +50,14 @@ The following predicates will be used in scoring the challenge
 - http://ontology.thomsonreuters.com/supplyChain#customer (URI)
 
 Additional predicates should be used to clarify the source(s) of the relationship
-- snippet count
-- confidence
-- snippets
+- http://ontology.thomsonreuters.com/supplyChain#snippetCount  (Integer - the number of snippets found for the relationship)
+- http://ontology.thomsonreuters.com/supplyChain#aggregatedConfidenceScore (Float between 0 and 1 expressing aggregate confidence in the relationship.)
+- proof: each proof point consists of a separate URI with the following predicates
+    - http://ontology.thomsonreuters.com/supplyChain#source (URI - where the proof was derived from)
+    - http://ontology.thomsonreuters.com/supplyChain#snippetText (String - Snippet from full text of the proof point, if applicable)
+    - http://ontology.thomsonreuters.com/supplyChain#field (String - field(s) used if from structured data)
+    - http://ontology.thomsonreuters.com/supplyChain#relationship (URI - of the aggregate relationship)
+    - http://ontology.thomsonreuters.com/supplyChain#confidenceScore (Float between 0 and 1 expressing confidence in the proof:  This might include confidence of entity match, freshness of information, trustworthiness of source)
 
 While the snippet and source predicates won't be used directly for scoring they will be used for spot checking submissions.
 
