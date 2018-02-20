@@ -62,7 +62,7 @@ Additional predicates should be used to clarify the source(s) of the relationshi
 While the snippet and source predicates won't be used directly for scoring they will be used for spot checking submissions.
 
 # Example Files
-Example data can be found at ...
+Sample ground truth data will be published shortly.
 
 # Participation Instructions
 
@@ -75,7 +75,7 @@ Example data can be found at ...
 
 ## Challenge submission
 
-As last year, we will be using the `[Gerbil](http://swc2018.aksw.org/gerbil/config)` system for challenge submission and scoring. Challengers may choose to submit their solutions as frequently as they like but only submissions published to the leaderboard will be accepted as to the competition.
+As last year, we will be using the [Gerbil](http://swc2018.aksw.org/gerbil/config) system for challenge submission and scoring. Challengers may choose to submit their solutions as frequently as they like but only submissions published to the leaderboard will be accepted as to the competition.
 
 ## Prizes
 The winning team of each task will receive a monetary award courtesy of our sponsors. The sum will be shared amongst the winning teams if several teams are declared the winners.
